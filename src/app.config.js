@@ -4,7 +4,7 @@ const CONFIG = {
         baseURL:"https://api.unsplash.com",
         client_id: "631231e4b2acb1f7d1c1471d1520f0813748f12ce67dbedaabaa6b9b70d8ab85",
         searchUrl:`https://api.unsplash.com/search/photos/?client_id=631231e4b2acb1f7d1c1471d1520f0813748f12ce67dbedaabaa6b9b70d8ab85&page=1&query=`,
-        randomPhoto:`https://api.unsplash.com/photos/random?client_id=631231e4b2acb1f7d1c1471d1520f0813748f12ce67dbedaabaa6b9b70d8ab85`
+        randomPhoto:`https://api.unsplash.com/photos/random?orientation=landscape&client_id=631231e4b2acb1f7d1c1471d1520f0813748f12ce67dbedaabaa6b9b70d8ab85`
     },
     /*
     openWeatherMap:{

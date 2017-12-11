@@ -1,10 +1,14 @@
 <template>
-  <div class="container">
-      <div class="overlay-image"></div>     
+  <div class="image-container">
+      <lazy-image></lazy-image>
+      
   </div>
 </template>
 <script>
     import { mapState, mapActions } from 'vuex'
+    import lazyImage from './components/lazy-image.vue'
+    import weather from './components/weather.vue'
+
     
     export default {
         name:'app',
@@ -12,6 +16,10 @@
             return{
                 name: 'Bob'
             }
+        },
+        components:{
+            lazyImage,
+            weather
         },
         computed:mapState(['currentLocation'])
         ,
@@ -39,7 +47,8 @@
         padding: 0;
         margin: 0;
     }
-    .container{
+    .image-container{
+        display:flex;
         background-color: #1c1c1c;
         width: 100vw;
         height: 100vh;
