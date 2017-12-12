@@ -21,7 +21,8 @@ const CONFIG = {
         KeyID:"b38021ee1abc7cbb",
         dataUrls:["conditions","hourly","forecast","forecast10day","astronomy"],
         forecastDataUrl:`http://api.wunderground.com/api/b38021ee1abc7cbb/`,
-        AutoComplateUrl:"http://autocomplete.wunderground.com/aq?format=json&c=UA&query="
+        AutoComplateUrl:"http://autocomplete.wunderground.com/aq?format=json&c=UA&query=",
+        geolookup:"http://api.wunderground.com/api/b38021ee1abc7cbb/geolookup/q/"
 
     }
 }

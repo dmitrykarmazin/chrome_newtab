@@ -18,13 +18,6 @@ export const GET_SUGGESTION = (context , keyword) => {
 
 
 export const GET_DATA = (context, location ) => {
-    console.log(context.getters.forecast.length);
-    if(context.getters.forecast){
-        console.log("1");
-    }else{
-        console.log("0");
-    }
- 
     return new Promise((resolve,reject)=>{
          Promise.all(config.WU.dataUrls.map(url=>{
             return new Promise((resolve,reject)=>{
@@ -34,7 +27,6 @@ export const GET_DATA = (context, location ) => {
              })
          }))
         .then((promises)=>{
-            console.log(promises);
             return promises;
         })
         .then(handleData)
@@ -47,6 +39,25 @@ export const GET_DATA = (context, location ) => {
     })
 }
 
+export const GET_POSITION = (context) => {
+    return new Promise((resolve,reject)=>{
+        if('geolocation' in window.navigator){
+                window.navigator.geolocation.getCurrentPosition( position => {
+                var lat,lng;
+                [lat,lng]=[position.coords.latitude,position.coords.longitude]
+                  fetch(`${config.WU.geolookup}${lat},${lng}.json`)
+                        .then(checkData)
+                        .then(data=> {
+                            context.commit('LOCATION_UPDATE',data.location.city)
+                            context.dispatch('GET_DATA', data.location.city)
+                        })
+                  resolve()
+                })
+        }else{
+            reject('Your browser not support ')
+        }
+    })
+}
 
 function checkData(response){
     if(response.ok){
