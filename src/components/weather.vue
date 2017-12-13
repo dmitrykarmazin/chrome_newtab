@@ -48,15 +48,17 @@
                     </div>
                 </div>
             </div>
+            <hourly-forecast></hourly-forecast> 
         </div>
     </div>
 </template>
 <script>
     import { mapGetters, mapState , mapActions } from 'vuex'
+    import hourlyForecast from './hourly-forecast.vue'
     export default {
         name:'weather',
         computed:{
-            ...mapGetters(['today','hourly','astronomy','forecast']),
+            ...mapGetters(['today','forecast']),
             ...mapState(['currentLocation'])
         },
         filters:{
@@ -68,6 +70,9 @@
             ...mapActions({
                 getPosition:'GET_POSITION'
                 })
+        },
+        components:{
+            hourlyForecast
         }
         
 
