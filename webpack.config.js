@@ -9,7 +9,8 @@ module.exports = {
     entry:'./src/main.js',
     output:{
         path: path.resolve(__dirname,'./dist_extention'),
-        filename:'bundle.js'
+        filename:'bundle.js',
+        chunkFilename: '[name].js'        
     },
     module:{
         rules:[
