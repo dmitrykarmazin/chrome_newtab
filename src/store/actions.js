@@ -73,7 +73,8 @@ function checkData(response){
 function handleData(data){
     return {
         today:data[0].current_observation,
-        hourly: data[1].hourly_forecast,
+        //hourly: data[1].hourly_forecast,
+        hourly: hourlyFormat(data[1].hourly_forecast),
         forecast: data[2].forecast,
         forecast10day : data[3].forecast,
         astronomy: { moon_phase: data[4].moon_phase,
@@ -99,4 +100,19 @@ function handleSugeestions(data){
             
      }    
     return sug_arr;
+}
+
+function hourlyFormat(arr){
+    var formatAar = [];
+    arr=arr.splice(0,24)
+    arr.forEach(item=>{
+        formatAar.push({
+            time_h:`${item.FCTTIME.hour}:${item.FCTTIME.min}`,
+            icon:item.icon,
+            temp:item.temp.metric
+        })
+        console.log(1)
+    })
+    
+    return formatAar;
 }
