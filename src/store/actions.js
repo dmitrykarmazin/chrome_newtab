@@ -3,12 +3,12 @@ import config from '../app.config'
 
 export const GET_SUGGESTION = (context , keyword) => {
     return new Promise((resolve,reject) => {
-    //axios.get(config.WU.AutoComplateUrl+keyword).then((response)=>console.log(response))
-    fetch(config.WU.AutoComplateUrl+keyword/*,{mode:'cors'}*/)        
+
+    fetch(config.WU.AutoComplateUrl+keyword)        
         .then(checkData)
         .then(handleSugeestions)
         .then(data =>{
-            context.commit('SUGGEST_LIST_UPDATE', data);
+            context.commit('SUGGEST_LIST_UPDATE', data)
             //context.commit('IS_OPEN_UPDATE',true);
             resolve()
         })
@@ -31,9 +31,8 @@ export const GET_DATA = (context, location ) => {
         })
         .then(handleData)
         .then((data)=>{
-            context.commit('FORECAST_UPDATE', data);
-            //console.log(context.getters.forecast);
-            resolve();
+            context.commit('FORECAST_UPDATE', data)
+            resolve(data);
         })
      
     })
@@ -43,7 +42,7 @@ export const GET_POSITION = (context) => {
     return new Promise((resolve,reject)=>{
         if('geolocation' in window.navigator){
                 window.navigator.geolocation.getCurrentPosition( position => {
-                var lat,lng;
+                var lat,lng
                 [lat,lng]=[position.coords.latitude,position.coords.longitude]
                   fetch(`${config.WU.geolookup}${lat},${lng}.json`)
                         .then(checkData)

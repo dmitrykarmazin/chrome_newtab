@@ -3,7 +3,7 @@
         <button class="location" @click="getPosition"></button>
         <div class="forecast__nowaday__main">
             <div class="location__title">
-                    <span class="title">{{today.display_location.full}}</span>
+                    <span class="title">{{today.display_location.city}}</span>
             </div>     
             <div class="current_temp">
                 <div class="weather__icon__wrap">
@@ -49,16 +49,26 @@
                 </div>
             </div>
             <hourly-forecast></hourly-forecast> 
+            <div class="chart-container">
+                <line-chart></line-chart> 
+            </div>
+            
         </div>
     </div>
 </template>
 <script>
     import { mapGetters, mapState , mapActions } from 'vuex'
     import hourlyForecast from './hourly-forecast.vue'
+    import lineChart from './line-chart.vue'
     export default {
         name:'weather',
+        data(){
+            return {
+                city:'*'
+            }
+        },
         computed:{
-            ...mapGetters(['today','forecast']),
+            ...mapGetters(['today','forecast','forecast10day']),
             ...mapState(['currentLocation'])
         },
         filters:{
@@ -72,7 +82,8 @@
                 })
         },
         components:{
-            hourlyForecast
+            hourlyForecast,
+            lineChart
         }
         
 
@@ -94,7 +105,7 @@
         font-family: Roboto,sans-serif;
         .location{
             position:absolute;
-            top:20px;
+            top:1px;
             right:10px;
             width:30px;
             height:30px;
@@ -107,11 +118,11 @@
             outline:none;
         }
         .location__title{
-            margin:20px;
+           // margin:20px;
             .title{
                 text-align: center;
                 font-family: Roboto,sans-serif;
-                font-size:2em;
+                font-size:1.75em;
                 font-weight: 200;
                 color: white;
             }
@@ -175,6 +186,15 @@
                 }
             }
         }
+    }
+    .chart-container{
+        margin:10px;
+        background-color: rgba(50, 34, 56,.8);
+        //background-color:#fff;
+        border-radius:5px;
+        //background: -webkit-linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+        //background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D);
+
     }
     
         
