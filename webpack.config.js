@@ -17,6 +17,7 @@ module.exports = {
             {
                 test:/\.js/,
                 loader:'babel-loader',
+                include: [path.resolve('src'), path.resolve('test'), path.resolve('node_modules/vue-echarts-v3/src')],
                 exclude:/node_modules/
             },
             {
