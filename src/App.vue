@@ -1,7 +1,12 @@
 <template>
   <div class="container">
       <loading-spinner v-if="!isLoaded"></loading-spinner> 
-      <background-layout v-if="isLoaded"></background-layout>
+      <transition name="fade">
+          <background-layout v-if="isLoaded"></background-layout>
+      </transition>
+      
+      <overlay></overlay>
+      
   </div>
 </template>
 <script>
@@ -9,6 +14,8 @@
 
     import backgroundLayout from './components/background-layout.vue'
     import loadingSpinner from './components/loading-spinner.vue'
+    import overlay from './components/overlay.vue'
+
     export default {
         name:'app',
         data(){
@@ -18,16 +25,21 @@
         },
         components:{
             backgroundLayout,
-            loadingSpinner
+            loadingSpinner,
+            overlay
         },
         computed:mapState(['currentLocation']),
-        methods:mapActions(['GET_DATA']),
+        methods:{
+            ...mapActions(['GET_DATA','GET_PHOTO'])
+        },
         created(){
+            this.GET_PHOTO()
             this.GET_DATA(this.currentLocation)
                         .then(()=> {
                                 setTimeout(()=>this.isLoaded = true,500)
                             })
-        }
+        },
+        
     }
 </script>
 <style lang="scss">
@@ -38,13 +50,20 @@
     }
     
     .container{
-        display:flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        //display:flex;
         width: 100vw;
         min-height: 560px;
         height: 100vh;
         justify-content: center;
         align-items: center;
         background-color: #EFF0F1;
+        overflow: hidden;
+
+
+        
         ///@include mobile-only(){
         //}
        // @include desktop(){
@@ -52,5 +71,11 @@
              //background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
              //background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);
         //}
+    }
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s
     }
 </style>

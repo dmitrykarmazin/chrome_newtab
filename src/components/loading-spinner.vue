@@ -11,8 +11,13 @@ export default {
 </script>
 <style lang="scss" scoped>
   .spinner{
+    position: absolute;
+    top:50%;
+    left:50%;
     width:55px;
     height: 55px;
+    //transform: translate(-50%,-50%);
+    margin:-22px 0 0 -22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
