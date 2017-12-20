@@ -13,6 +13,8 @@ const hourly = state => state.data.hourly
 
 const astronomy = state => state.data.astronomy
 
+const photo = state => state.photo_data
+
 export {
     suggesctions,
     all_forecasts,
@@ -20,7 +22,8 @@ export {
     forecast,
     forecast10day,
     hourly,
-    astronomy
+    astronomy,
+    photo
 
 //    isOpen
 }

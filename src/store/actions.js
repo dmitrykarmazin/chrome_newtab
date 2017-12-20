@@ -58,6 +58,22 @@ export const GET_POSITION = (context) => {
     })
 }
 
+export const GET_PHOTO = (context) =>{
+    fetch(config.unsplash.randomPhoto)
+    .then(res => res.json())
+    .then(({urls,location,user,links})=>{
+        return {
+            urls,
+            location,
+            user,
+            links
+        }
+    })
+    .then(data=>{
+        context.commit('PHOTO_UPDATE', data)
+    })
+
+}
 function checkData(response){
     if(response.ok){
         return response.json();

@@ -12,7 +12,13 @@
         lat:0,
         lon:0
      },
-     isfetching:false
+     isfetching:false,
+     photo_data:{
+         urls:{},
+         user:{},
+         location:{},
+         links:{}
+     }
      //isOpen:false
      
  }
