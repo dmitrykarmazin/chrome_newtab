@@ -16,27 +16,23 @@ export default {
     left:50%;
     width:55px;
     height: 55px;
-    //transform: translate(-50%,-50%);
     margin:-22px 0 0 -22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 50%;
-    animation: spin .7s ease-in-out infinite ;
-    animation: rotate .8s ease-in-out infinite ;
-  
+    animation: rotate 0.5s ease-in-out infinite;
     animation-fill-mode: forwards;
   
     .cube{
       background-color:#517;
       width: 10px;
       height: 10px;
+      border-radius: 50%;
+      animation: pulse 0.7s linear infinite;
     }
-    @keyframes spin {
+    @keyframes pulse {
       50%{
-        transform: scale(1.5);
-      }
-      100%{
         transform: scale(1.5);
       }
     }

@@ -8,6 +8,7 @@
     },
     "permissions": [
         "tabs",
+        "bookmarks",
         "*://*.unsplash.com/*",
         "*://*.wunderground.com/*"
     ]
