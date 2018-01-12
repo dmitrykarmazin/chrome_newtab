@@ -71,6 +71,7 @@ export const GET_PHOTO = (context) =>{
     })
     .then(data=>{
         context.commit('PHOTO_UPDATE', data)
+        context.commit('PHOTO_DATA_LOAD',true)
     })
 
 }

@@ -12,7 +12,9 @@
         lat:0,
         lon:0
      },
-     isfetching:false,
+     
+     isloading:false,
+     photo_data_load:false,
      photo_data:{
          urls:{},
          user:{},
