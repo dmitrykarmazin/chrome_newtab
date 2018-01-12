@@ -1,16 +1,22 @@
 <template>
-<div class="overlay">
- <div class="bookmars"></div>
- <div class="photo_deteils"></div>
- <weather></weather>
-</div>
+  <div class="overlay">
+    <photo-info></photo-info>
+    <page-grid></page-grid>
+    <forecast></forecast>
+  </div>
 </template>
 <script>
-import weather from './weather.vue'
+///http://.+\.\[a-z]\/favicon.ico
+//chrome://favicon/http...
+import photoInfo from './photo-info.vue';
+import forecast from './forecast.vue'
+import pageGrid from './page-grid.vue'
 export default {
   name:'overlay',
   components:{
-    weather
+    photoInfo,
+    forecast,
+    pageGrid
   }
 
 }
