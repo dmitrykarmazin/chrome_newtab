@@ -1,5 +1,6 @@
 
 import config from '../app.config'
+import ls from '../utils/localStorage.js'
 
 export const GET_SUGGESTION = (context , keyword) => {
     return new Promise((resolve,reject) => {
@@ -19,7 +20,7 @@ export const GET_SUGGESTION = (context , keyword) => {
 
 export const GET_DATA = (context, location ) => {
     return new Promise((resolve,reject)=>{
-         Promise.all(config.WU.dataUrls.map(url=>{
+        Promise.all(config.WU.dataUrls.map(url=>{
             return new Promise((resolve,reject)=>{
                 fetch(`${config.WU.forecastDataUrl}${url}/q/${location}.json`)
                     .then(checkData)
@@ -32,6 +33,7 @@ export const GET_DATA = (context, location ) => {
         .then(handleData)
         .then((data)=>{
             context.commit('FORECAST_UPDATE', data)
+            //ls.set('forecast', data, 60*1000) 
             resolve(data);
         })
      
@@ -47,8 +49,10 @@ export const GET_POSITION = (context) => {
                   fetch(`${config.WU.geolookup}${lat},${lng}.json`)
                         .then(checkData)
                         .then(data=> {
-                            context.commit('LOCATION_UPDATE',data.location.city)
+//ls.set('location', data.location.city)
+                            context.commit('LOCATION_UPDATE', data.location.city)
                             context.dispatch('GET_DATA', data.location.city)
+
                         })
                   resolve()
                 })

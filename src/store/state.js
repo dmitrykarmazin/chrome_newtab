@@ -1,18 +1,13 @@
+ import ls from '../utils/localStorage.js'
+
  export default {
-     data:{
-        today:{},
-        hourly:[],
-        forecast:{},
-        forecast10days:{},
-        astronomy:{}
-     },
+     data: {},
      suggestions:[""],
      currentLocation:'Kiev',
      currentCoords:{
         lat:0,
         lon:0
      },
-     
      isloading:false,
      photo_data_load:false,
      photo_data:{
@@ -21,6 +16,5 @@
          location:{},
          links:{}
      }
-     //isOpen:false
      
  }

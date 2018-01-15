@@ -1,7 +1,7 @@
 
 const suggesctions  = state => state.suggestions;
 //const isOpen = state => state.isOpen;
-const all_forecasts = state => state.data;
+const data = state => state.data;
 
 const today = state => state.data.today
 
@@ -17,7 +17,7 @@ const photo = state => state.photo_data
 
 export {
     suggesctions,
-    all_forecasts,
+    data,
     today,
     forecast,
     forecast10day,
