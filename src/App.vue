@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-    import { mapState, mapActions } from 'vuex'
+    import { mapState, mapActions, mapGetters } from 'vuex'
 
     import backgroundLayout from './components/background-layout.vue'
     import loadingSpinner from './components/loading-spinner.vue'
@@ -30,18 +30,24 @@
             loadingSpinner,
             overlay
         },
-        computed:mapState(['currentLocation','photo_data_load']),
-        created(){
+        computed:{
+            ...mapState(['currentLocation','photo_data_load'])
+         
+        },
+        mounted(){
             this.init()
         },
         methods:{
             ...mapActions(['GET_DATA','GET_PHOTO']),
             init() {
                 this.GET_PHOTO()
+                this.checkForecast()
+            },
+            checkForecast(){
                 this.GET_DATA(this.currentLocation)
-                        .then(()=> {
-                            setTimeout(()=>this.isLoaded = true,700)
-                        })
+                    .then(()=> {
+                        setTimeout(()=>this.isLoaded = true,700)
+                })   
             }
         }
     }

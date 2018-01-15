@@ -11,6 +11,8 @@
 import photoInfo from './photo-info.vue';
 import forecast from './forecast.vue'
 import pageGrid from './page-grid.vue'
+
+  
 export default {
   name:'overlay',
   components:{
@@ -31,7 +33,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 9999;
+    z-index: 9998;
   }
   .bookmars{
     width: 25%;
