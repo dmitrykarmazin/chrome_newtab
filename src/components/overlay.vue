@@ -8,9 +8,9 @@
 <script>
 ///http://.+\.\[a-z]\/favicon.ico
 //chrome://favicon/http...
-import photoInfo from './photo-info.vue';
-import forecast from './forecast.vue'
-import pageGrid from './page-grid.vue'
+import photoInfo from './bg/photo-info.vue'
+import forecast from './forecast/forecast.vue'
+import pageGrid from './pages/page-grid.vue'
 
   
 export default {

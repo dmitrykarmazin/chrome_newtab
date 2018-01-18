@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import state from './state'
-import * as getters from './getters'
-import * as mutations from './mutations'
-import * as actions from './actions'
+
+import { default as bgModule } from './modules/bg'
+import { default as forecastModule}   from './modules/forecast'
+import { default as pagesModule }  from './modules/pages'
 
 Vue.use(Vuex)
 
-
 export default new Vuex.Store({
-    state,
-    getters,
-    mutations,
-    actions
+    modules:{
+      forecast:forecastModule,
+      photo:bgModule,
+      pages:pagesModule
+    }
 })
