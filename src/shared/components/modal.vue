@@ -38,7 +38,7 @@ export default {
     },
     width:{
       type:Number,
-      default:450
+      default:300
     },
     active:{
       type:Boolean,
@@ -53,14 +53,7 @@ export default {
       if(this.closeType.includes(type)){
         this.isActive = false
         this.$emit('close')
-      }
-      //if(event.target.className==="modal-mask"){
-        
-        // this.remove(this.$el)
-      //  setTimeout(()=>{
-          //this.remove(this.$el)
-       // },150)
-      //}     
+      }   
     },
     remove(el){
       el.parentNode.removeChild(el);
@@ -70,15 +63,6 @@ export default {
     active(value){
       this.isActive = value
     }
-  },
-  mounted(){
-    this.addEventListener('click',(e)=>{
-      console.log(e);
-      if(event.target.className==="modal-mask"){
-        this.$emit('close')
-      }
-    })
-
   }
 }
 </script>
@@ -119,7 +103,7 @@ export default {
     min-height: 200px;
     max-height: calc(100vh - 50px);
     border-radius:5px;
-    background-color: lightgray;
+    background-color:#fff;
     overflow: hidden;
     box-shadow: 0 0 5px rgba(251, 223, 255, 0.7);
     z-index:2;
