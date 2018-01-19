@@ -10,6 +10,8 @@
         "tabs",
         "bookmarks",
         "*://*.unsplash.com/*",
-        "*://*.wunderground.com/*"
+        "*://*.wunderground.com/*",
+        "chrome://favicon/*",
+        "https://fonts.googleapis.com/*"
     ]
   }
